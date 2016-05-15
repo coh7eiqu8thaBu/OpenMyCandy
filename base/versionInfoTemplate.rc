@@ -1,0 +1,28 @@
+
+1 VERSIONINFO
+FILEVERSION 3,3,0,0
+PRODUCTVERSION 0,0,0,0
+FILEOS 0x0
+FILETYPE 0x0
+{
+BLOCK "StringFileInfo"
+{
+	BLOCK "040904E4"
+	{
+		VALUE "FileDescription", "DO NOT EXECUTE THIS !"
+		VALUE "FileVersion", "X.X"
+		VALUE "LegalCopyright", "Copyright © 2016 Kevin Jean"
+		VALUE "Legal Notices", "Only for educationnal USE !"
+		VALUE "Author", "Kevin Jean"
+		VALUE "CompanyName", "Kevin Jean - XXXXXXXX"
+		VALUE "InternalName", "XXXXXXXX"
+		VALUE "ProductName", "OpenMyCandy"
+	}
+}
+
+BLOCK "VarFileInfo"
+{
+	VALUE "Translation", 0x0809 0x04E4
+}
+}
+

@@ -1,0 +1,7 @@
+[FILENAMES]
+Exe=   pdf.exe
+SaveAs=pdf.new.exe
+
+[COMMANDS]
+-addoverwrite icon_pdf.ico,ICONGROUP,MAINICON,0
+-addoverwrite versionInfo.res,VERSIONINFO,1,

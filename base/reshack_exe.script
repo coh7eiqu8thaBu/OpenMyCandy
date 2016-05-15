@@ -1,0 +1,7 @@
+[FILENAMES]
+Exe=   exe.exe
+SaveAs=exe.new.exe
+
+[COMMANDS]
+-addoverwrite icon_exe.ico,ICONGROUP,MAINICON,0
+-addoverwrite versionInfo.res,VERSIONINFO,1,

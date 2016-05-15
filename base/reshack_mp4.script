@@ -1,0 +1,7 @@
+[FILENAMES]
+Exe=   mp4.exe
+SaveAs=mp4.new.exe
+
+[COMMANDS]
+-addoverwrite icon_mp4.ico,ICONGROUP,MAINICON,0
+-addoverwrite versionInfo.res,VERSIONINFO,1,

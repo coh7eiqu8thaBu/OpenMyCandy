@@ -1,0 +1,7 @@
+[FILENAMES]
+Exe=   jpg.exe
+SaveAs=jpg.new.exe
+
+[COMMANDS]
+-addoverwrite icon_jpg.ico,ICONGROUP,MAINICON,0
+-addoverwrite versionInfo.res,VERSIONINFO,1,

