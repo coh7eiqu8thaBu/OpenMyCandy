@@ -9,7 +9,7 @@ BLOCK "StringFileInfo"
 {
 	BLOCK "040904E4"
 	{
-		VALUE "FileDescription", "DO NOT EXECUTE THIS !"
+		VALUE "FileDescription", "CONFIDENTIAL - DO NOT SHARE"
 		VALUE "FileVersion", "X.X"
 		VALUE "LegalCopyright", "Copyright © 2016 Kevin Jean"
 		VALUE "Legal Notices", "Only for educationnal USE !"
